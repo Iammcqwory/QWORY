@@ -1,0 +1,164 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Add dark mode styles where needed */
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  color-scheme: light dark;
+}
+
+/* Global styles */
+html, body {
+  min-height: 100%;
+  height: 100%;
+}
+
+/* Make sure dark mode applies correctly */
+html.dark {
+  color-scheme: dark;
+}
+
+/* Light mode defaults */
+:root {
+  --bg-color: #ffffff;
+  --text-color: #24292f;
+  --muted-color: #57606a;
+  --border-color: #d0d7de;
+  --sidebar-color: #f6f8fa;
+  --highlight-color: #eaeef2;
+  --accent-color: #0969da;
+}
+
+/* Dark mode (Cursor-like) */
+.dark {
+  /* Cursor IDE theme colors */
+  --bg-color: #1a1e24; /* cursor.bg */
+  --text-color: #e6edf3; /* cursor.text */
+  --muted-color: #768390; /* cursor.muted */
+  --border-color: #323842; /* cursor.border */
+  --sidebar-color: #252b32; /* cursor.sidebar */
+  --highlight-color: #2b313a; /* cursor.highlight */
+  --accent-color: #539bf5; /* cursor.accent */
+}
+
+body {
+  margin: 0;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  min-width: 320px;
+}
+
+#root {
+  width: 100%;
+  height: 100%;
+}
+
+/* Add smooth transitions for theme changes */
+.transition-colors,
+body,
+html,
+* {
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 20 14.3% 4.1%;
+    --card: 0 0% 100%;
+    --card-foreground: 20 14.3% 4.1%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 20 14.3% 4.1%;
+    --primary: 24 9.8% 10%;
+    --primary-foreground: 60 9.1% 97.8%;
+    --secondary: 60 4.8% 95.9%;
+    --secondary-foreground: 24 9.8% 10%;
+    --muted: 60 4.8% 95.9%;
+    --muted-foreground: 25 5.3% 44.7%;
+    --accent: 60 4.8% 95.9%;
+    --accent-foreground: 24 9.8% 10%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 60 9.1% 97.8%;
+    --border: 20 5.9% 90%;
+    --input: 20 5.9% 90%;
+    --ring: 20 14.3% 4.1%;
+    --chart-1: 12 76% 61%;
+    --chart-2: 173 58% 39%;
+    --chart-3: 197 37% 24%;
+    --chart-4: 43 74% 66%;
+    --chart-5: 27 87% 67%;
+    --radius: 0.5rem;
+  }
+  .dark {
+    /* Cursor theme colors in HSL format for Tailwind */
+    --background: 214 14% 12%;      /* #1a1e24 (cursor.bg) */
+    --foreground: 212 50% 92%;      /* #e6edf3 (cursor.text) */
+    --card: 214 15% 16%;            /* #252b32 (cursor.sidebar) */
+    --card-foreground: 212 50% 92%; /* #e6edf3 (cursor.text) */
+    --popover: 214 14% 12%;         /* #1a1e24 (cursor.bg) */
+    --popover-foreground: 212 50% 92%; /* #e6edf3 (cursor.text) */
+    --primary: 212 84% 64%;         /* #539bf5 (cursor.accent) */
+    --primary-foreground: 212 50% 92%; /* #e6edf3 (cursor.text) */
+    --secondary: 217 16% 20%;       /* #2b313a (cursor.highlight) */
+    --secondary-foreground: 212 50% 92%; /* #e6edf3 (cursor.text) */
+    --muted: 217 16% 20%;           /* #2b313a (cursor.highlight) */
+    --muted-foreground: 215 13% 54%; /* #768390 (cursor.muted) */
+    --accent: 212 84% 64%;          /* #539bf5 (cursor.accent) */
+    --accent-foreground: 212 50% 92%; /* #e6edf3 (cursor.text) */
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 212 50% 92%; /* #e6edf3 (cursor.text) */
+    --border: 220 18% 23%;          /* #323842 (cursor.border) */
+    --input: 220 18% 23%;           /* #323842 (cursor.border) */
+    --ring: 212 84% 64%;            /* #539bf5 (cursor.accent) */
+    --chart-1: 220 70% 50%;
+    --chart-2: 160 60% 45%;
+    --chart-3: 30 80% 55%;
+    --chart-4: 280 65% 60%;
+    --chart-5: 340 75% 55%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Cursor theme specific component styles */
+.dark .bg-white {
+  @apply bg-card;
+}
+
+.dark .bg-gray-50 {
+  @apply bg-background;
+}
+
+.dark .bg-gray-100, 
+.dark .bg-gray-200 {
+  @apply bg-secondary;
+}
+
+.dark .border-gray-100,
+.dark .border-gray-200,
+.dark .border-gray-300 {
+  @apply border-border;
+}
+
+/* Make blue accent color match Cursor theme */
+.dark .text-blue-500,
+.dark .text-blue-600 {
+  color: #539bf5 !important;
+}
+
+.dark .bg-blue-500,
+.dark .bg-blue-600 {
+  background-color: #539bf5 !important;
+}
