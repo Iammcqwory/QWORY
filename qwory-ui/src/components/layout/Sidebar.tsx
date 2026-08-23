@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import { Link } from 'react-router-dom';
 import { Home, Settings, X } from 'lucide-react';
 
